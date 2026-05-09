@@ -602,121 +602,109 @@
 
 
 
-  /* ── INTRO VIDEO BANNER ── */
-  #intro-video {
-    width: 100%;
-    background: #000;
-    position: relative;
-    overflow: hidden;
+  /* ── MEET PAULINO VIDEO SECTION ── */
+  #meet {
+    background: var(--navy-mid);
+    padding: 7rem 4rem;
   }
-  #intro-video video {
-    width: 100%;
-    display: block;
-    max-height: 90vh;
-    object-fit: cover;
+  .meet-inner {
+    max-width: 1100px; margin: 0 auto;
   }
-  .intro-video-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(11,17,32,0.35) 0%,
-      transparent 30%,
-      transparent 60%,
-      rgba(11,17,32,0.85) 100%
-    );
-    pointer-events: none;
-  }
-  .intro-video-badge {
-    position: absolute;
-    top: 1.5rem; left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.68rem; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--gold);
-    background: rgba(11,17,32,0.6);
-    border: 0.5px solid var(--border);
-    padding: 0.4rem 1.25rem;
-    backdrop-filter: blur(6px);
-    white-space: nowrap;
-  }
-  .intro-video-caption {
-    position: absolute;
-    bottom: 2.5rem; left: 50%;
-    transform: translateX(-50%);
+  .meet-header {
     text-align: center;
+    margin-bottom: 3rem;
+  }
+  .meet-video-container {
     width: 100%;
-    padding: 0 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #000;
+    border: 0.5px solid var(--border);
+    overflow: hidden;
+    position: relative;
   }
-  .intro-video-caption h2 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(1.75rem, 4vw, 3rem);
-    font-weight: 300;
-    color: var(--white);
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
-  }
-  .intro-video-caption h2 em {
-    font-style: italic; color: var(--gold-light);
-  }
-  .intro-video-caption p {
-    font-size: 0.85rem;
-    color: rgba(208,216,232,0.8);
-    letter-spacing: 0.06em;
-  }
-  .scroll-hint {
-    position: absolute;
-    bottom: 1rem; left: 50%;
-    transform: translateX(-50%);
-    display: flex; flex-direction: column;
-    align-items: center; gap: 0.3rem;
-    font-size: 0.65rem; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--text-muted);
-    animation: bounceDown 2s infinite;
-  }
-  .scroll-hint::after {
-    content: "";
-    width: 1px; height: 28px;
-    background: var(--gold);
+  .meet-video-container video {
+    width: 100%;
     display: block;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+    background: #000;
   }
-  @keyframes bounceDown {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(6px); }
+  .meet-tagline {
+    display: flex; justify-content: center;
+    gap: 3rem; margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .meet-tagline-item {
+    text-align: center;
+  }
+  .meet-tagline-label {
+    font-size: 0.68rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.25rem;
+  }
+  .meet-tagline-val {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.1rem; font-weight: 300;
+    color: var(--white);
   }
   @media (max-width: 900px) {
-    #intro-video video { max-height: 60vh; }
-    .intro-video-caption h2 { font-size: 1.5rem; }
+    #meet { padding: 5rem 1.5rem; }
+    .meet-tagline { gap: 1.5rem; }
   }
 </style>
 </head>
 <body>
 
 
-<!-- INTRO VIDEO BANNER -->
-<section id="intro-video">
-  <video autoplay muted loop playsinline preload="auto">
-    <source src="Webpage_Introduction__1_.mp4" type="video/mp4">
-  </video>
-  <div class="intro-video-overlay"></div>
-  <div class="intro-video-badge">Meet Paulino — Executive Virtual Assistant</div>
-  <div class="intro-video-caption">
-    <h2>Strategic support.<br><em>Executive precision.</em></h2>
-    <p>Scroll to explore my services</p>
-  </div>
-  <div class="scroll-hint">Scroll</div>
-</section>
-
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#home">P. Cuison</a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
+    <li><a href="#meet">Meet Me</a></li><li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#running">Beyond Work</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#why">Why Me</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a class="nav-cta" href="#contact">Book a Call</a>
 </nav>
+
+<!-- MEET PAULINO -->
+<section id="meet">
+  <div class="meet-inner">
+    <div class="meet-header reveal">
+      <div class="section-tag" style="justify-content:center;">Introduction</div>
+      <h2 class="section-title">Meet <em>Paulino.</em></h2>
+      <p style="color:var(--text-muted); font-size:0.95rem; max-width:520px; margin:0 auto; line-height:1.8;">
+        Before we work together, I want you to know who I am — how I think, how I work, and what I stand for.
+      </p>
+    </div>
+    <div class="meet-video-container reveal">
+      <video controls playsinline preload="metadata">
+        <source src="Webpage_Introduction__1_.mp4" type="video/mp4">
+        Your browser does not support video playback.
+      </video>
+    </div>
+    <div class="meet-tagline reveal">
+      <div class="meet-tagline-item">
+        <div class="meet-tagline-label">Experience</div>
+        <div class="meet-tagline-val">10+ Years</div>
+      </div>
+      <div class="meet-tagline-item">
+        <div class="meet-tagline-label">Approach</div>
+        <div class="meet-tagline-val">Strategic &amp; Precise</div>
+      </div>
+      <div class="meet-tagline-item">
+        <div class="meet-tagline-label">Availability</div>
+        <div class="meet-tagline-val">Project &amp; Retainer</div>
+      </div>
+      <div class="meet-tagline-item">
+        <div class="meet-tagline-label">Certified</div>
+        <div class="meet-tagline-val">Lean Six Sigma</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- HERO -->
 <section id="home">
