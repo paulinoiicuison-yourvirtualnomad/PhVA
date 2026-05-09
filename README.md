@@ -102,7 +102,7 @@
   }
   .hero-inner {
     position: relative; z-index: 1;
-    max-width: 620px; width: 100%;
+    max-width: 1100px; margin: 0 auto; width: 100%;
   }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 0.75rem;
@@ -599,55 +599,112 @@
   }
 
 
-  /* ── INTRO VIDEO ── */
-  .hero-video-section {
-    position: absolute;
-    right: 4rem; top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-  }
-  @media (max-width: 900px) {
-    .hero-video-section {
-      position: static;
-      transform: none;
-      padding: 0 1.5rem 3rem;
-    }
-  }
-  .hero-video-wrap {
-    position: relative;
-    margin-top: 3.5rem;
-    max-width: 380px;
-    border: 0.5px solid var(--border);
-    background: #000;
-    overflow: hidden;
-    opacity: 0; animation: fadeUp 0.8s 1.1s forwards;
-  }
-  .hero-video-wrap video {
-    width: 100%; display: block;
-    aspect-ratio: 9/16; object-fit: cover;
-  }
-  .hero-video-label {
-    position: absolute; top: 1rem; left: 1rem;
-    font-size: 0.68rem; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--gold);
-    background: rgba(11,17,32,0.75);
-    padding: 0.3rem 0.75rem;
-    backdrop-filter: blur(4px);
-  }
-  .hero-intro-layout {
-    display: grid;
-    grid-template-columns: 1fr 380px;
-    gap: 4rem;
-    align-items: center;
-  }
-  @media (max-width: 900px) {
-    .hero-intro-layout { grid-template-columns: 1fr; }
-    .hero-video-wrap { max-width: 100%; }
-  }
 
+
+
+  /* ── INTRO VIDEO BANNER ── */
+  #intro-video {
+    width: 100%;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+  }
+  #intro-video video {
+    width: 100%;
+    display: block;
+    max-height: 90vh;
+    object-fit: cover;
+  }
+  .intro-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(11,17,32,0.35) 0%,
+      transparent 30%,
+      transparent 60%,
+      rgba(11,17,32,0.85) 100%
+    );
+    pointer-events: none;
+  }
+  .intro-video-badge {
+    position: absolute;
+    top: 1.5rem; left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.68rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    background: rgba(11,17,32,0.6);
+    border: 0.5px solid var(--border);
+    padding: 0.4rem 1.25rem;
+    backdrop-filter: blur(6px);
+    white-space: nowrap;
+  }
+  .intro-video-caption {
+    position: absolute;
+    bottom: 2.5rem; left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+    padding: 0 2rem;
+  }
+  .intro-video-caption h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .intro-video-caption h2 em {
+    font-style: italic; color: var(--gold-light);
+  }
+  .intro-video-caption p {
+    font-size: 0.85rem;
+    color: rgba(208,216,232,0.8);
+    letter-spacing: 0.06em;
+  }
+  .scroll-hint {
+    position: absolute;
+    bottom: 1rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column;
+    align-items: center; gap: 0.3rem;
+    font-size: 0.65rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--text-muted);
+    animation: bounceDown 2s infinite;
+  }
+  .scroll-hint::after {
+    content: "";
+    width: 1px; height: 28px;
+    background: var(--gold);
+    display: block;
+  }
+  @keyframes bounceDown {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+  @media (max-width: 900px) {
+    #intro-video video { max-height: 60vh; }
+    .intro-video-caption h2 { font-size: 1.5rem; }
+  }
 </style>
 </head>
 <body>
+
+
+<!-- INTRO VIDEO BANNER -->
+<section id="intro-video">
+  <video autoplay muted loop playsinline preload="auto">
+    <source src="Webpage_Introduction__1_.mp4" type="video/mp4">
+  </video>
+  <div class="intro-video-overlay"></div>
+  <div class="intro-video-badge">Meet Paulino — Executive Virtual Assistant</div>
+  <div class="intro-video-caption">
+    <h2>Strategic support.<br><em>Executive precision.</em></h2>
+    <p>Scroll to explore my services</p>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
 
 <!-- NAV -->
 <nav>
@@ -695,19 +752,6 @@
     </div>
   </div>
 
-  <!-- INTRO VIDEO -->
-  <div class="hero-video-section">
-    <div class="hero-video-wrap">
-      <div class="hero-video-label">Meet Paulino</div>
-      <video controls playsinline preload="metadata" poster="">
-        <source src="Webpage_Introduction__1_.mp4" type="video/mp4">
-        Your browser does not support video playback.
-      </video>
-    </div>
-    <div style="margin-top:1rem; opacity:0; animation: fadeUp 0.8s 1.2s forwards;">
-      <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.7; max-width:380px;">Watch my 60-second introduction to learn how I work, what I value, and how I can support your business.</p>
-    </div>
-  </div>
 </section>
 
 <!-- ABOUT -->
